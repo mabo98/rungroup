@@ -8,9 +8,10 @@ import java.time.LocalDateTime;
 public class EventsMapper {
     public static Event mapToEvent(EventDto eventDto) {
         return Event.builder()
+                .id(eventDto.getId())
                 .name(eventDto.getName())
-                .startTime(LocalDateTime.parse(eventDto.getStartTime()))
-                .endTime(LocalDateTime.parse(eventDto.getEndTime()))
+                .startTime(eventDto.getStartTime())
+                .endTime(eventDto.getEndTime())
                 .type(eventDto.getType())
                 .photoUrl(eventDto.getPhotoUrl())
                 .createdOn(eventDto.getCreatedOn())
@@ -19,9 +20,10 @@ public class EventsMapper {
     }
     public static EventDto mapToEventDto(Event event) {
         return EventDto.builder()
+                .id(event.getId())
                 .name(event.getName())
-                .startTime(String.valueOf(event.getStartTime()))
-                .endTime(String.valueOf(event.getEndTime()))
+                .startTime(event.getStartTime())
+                .endTime(event.getEndTime())
                 .type(event.getType())
                 .photoUrl(event.getPhotoUrl())
                 .createdOn(event.getCreatedOn())

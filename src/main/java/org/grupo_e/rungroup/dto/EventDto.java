@@ -17,9 +17,9 @@ public class EventDto {
     private long id;
     private String name;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private String startTime;
+    private LocalDateTime startTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private String endTime;
+    private LocalDateTime endTime;
     private String type;
     private String photoUrl;
     private LocalDateTime createdOn;
