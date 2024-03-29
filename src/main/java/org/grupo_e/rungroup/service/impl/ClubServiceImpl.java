@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.grupo_e.rungroup.mapper.ClubMapper.mapToClub;
+import static org.grupo_e.rungroup.mapper.ClubMapper.mapToClubDto;
+
 @Service
 public class ClubServiceImpl implements ClubService {
     private ClubRepository clubRepository;
@@ -17,18 +20,7 @@ public class ClubServiceImpl implements ClubService {
     public ClubServiceImpl(ClubRepository clubRepository) {
         this.clubRepository = clubRepository;
     }
-    private ClubDto mapToClubDto(Club club){
-        ClubDto clubDto = ClubDto.builder()
-                .id(club.getId())
-                .title(club.getTitle())
-                .photoUrl(club.getPhotoUrl())
-                .content(club.getContent())
-                .createdOn(club.getCreatedOn())
-                .updatedOn(club.getUpdatedOn())
-                .build();
 
-        return clubDto;
-    }
     @Override
     public List<ClubDto> findAllClubs() {
 List<Club> clubs = clubRepository.findAll();
@@ -64,17 +56,7 @@ List<Club> clubs = clubRepository.findAll();
         return clubs.stream().map(club -> mapToClubDto(club)).collect(Collectors.toList());
     }
 
-    private Club mapToClub(ClubDto club) {
-        Club club1 = Club.builder()
-                .id(club.getId())
-                .title(club.getTitle())
-                .photoUrl(club.getPhotoUrl())
-                .content(club.getContent())
-                .createdOn(club.getCreatedOn())
-                .updatedOn(club.getUpdatedOn())
-                .build();
-        return club1;
-    }
+
 
 
 }

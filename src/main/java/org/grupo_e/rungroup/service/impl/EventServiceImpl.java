@@ -5,13 +5,18 @@ import org.grupo_e.rungroup.models.Club;
 import org.grupo_e.rungroup.models.Event;
 import org.grupo_e.rungroup.repository.ClubRepository;
 import org.grupo_e.rungroup.repository.EventRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.grupo_e.rungroup.service.EventService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.grupo_e.rungroup.mapper.EventsMapper.mapToEvent;
+import static org.grupo_e.rungroup.mapper.EventsMapper.mapToEventDto;
 
 @Service
-public class EventServiceImpl implements EventService{
+public class EventServiceImpl implements EventService {
     private final EventRepository eventRepository;
     private final ClubRepository clubRepository;
 
@@ -28,15 +33,11 @@ public class EventServiceImpl implements EventService{
         event.setClub(club);
         eventRepository.save(event);
     }
-    private Event mapToEvent(EventDto eventDto) {
-        return Event.builder()
-                .name(eventDto.getName())
-                .startTime(LocalDateTime.parse(eventDto.getStartTime()))
-                .endTime(LocalDateTime.parse(eventDto.getEndTime()))
-                .type(eventDto.getType())
-                .photoUrl(eventDto.getPhotoUrl())
-                .createdOn(eventDto.getCreatedOn())
-                .updatedOn(eventDto.getUpdatedOn())
-                .build();
+
+    @Override
+    public List<EventDto> findAllEvents() {
+        List<Event> events = eventRepository.findAll();
+        return events.stream().map((event) -> mapToEventDto(event)).collect(Collectors.toList());
     }
+
 }
