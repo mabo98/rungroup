@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -15,7 +16,9 @@ import java.time.LocalDateTime;
 public class EventDto {
     private long id;
     private String name;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private String startTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private String endTime;
     private String type;
     private String photoUrl;
