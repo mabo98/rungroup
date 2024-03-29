@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.grupo_e.rungroup.models.Club;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -24,5 +25,5 @@ public class EventDto {
     private String photoUrl;
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
-
+    private Club club;
 }

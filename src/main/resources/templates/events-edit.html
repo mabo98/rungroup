@@ -4,7 +4,7 @@
 
 <head>
     <title>
-        Events Create
+        Events Edit
     </title>
 </head>
 
@@ -14,7 +14,8 @@
     <!-- Page Content-->
     <section layout:fragment="body" class="py-5">
         <div class="container">
-            <form role="form" method="post" th:action="@{/events/{clubId}(clubId=${clubId})}" th:object="${event}">
+            <form role="form" method="post" th:action="@{/events/{eventId}/edit(eventId=${event.id})}"
+                  th:object="${event}">
                 <input type="hidden" th:field="*{id}">
                 <div class="form-row">
                     <div class="form-group col-md-6">

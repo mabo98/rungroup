@@ -7,8 +7,6 @@ import org.grupo_e.rungroup.repository.ClubRepository;
 import org.grupo_e.rungroup.repository.EventRepository;
 import org.grupo_e.rungroup.service.EventService;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,6 +42,17 @@ public class EventServiceImpl implements EventService {
     public EventDto findEventById(long eventId) {
         Event event = eventRepository.findById(eventId).get();
         return mapToEventDto(event);
+    }
+
+    @Override
+    public void updateEvent(EventDto eventDto) {
+        Event event = mapToEvent(eventDto);
+        eventRepository.save(event);
+    }
+
+    @Override
+    public void delete(long eventId) {
+        eventRepository.deleteById(eventId);
     }
 
 }

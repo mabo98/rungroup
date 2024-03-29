@@ -33,6 +33,4 @@ public class Event {
     @ManyToOne
     @JoinColumn(name = "club_id", nullable = false)
     private Club club;
-
-
 }

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import static org.grupo_e.rungroup.mapper.EventsMapper.mapToEventDto;
 
 public class ClubMapper {
-    public static ClubDto mapToClubDto(Club club){
+    public static ClubDto mapToClubDto(Club club) {
         ClubDto clubDto = ClubDto.builder()
                 .id(club.getId())
                 .title(club.getTitle())
@@ -21,6 +21,7 @@ public class ClubMapper {
 
         return clubDto;
     }
+
     public static Club mapToClub(ClubDto club) {
         Club club1 = Club.builder()
                 .id(club.getId())

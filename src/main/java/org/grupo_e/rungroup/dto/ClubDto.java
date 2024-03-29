@@ -15,7 +15,7 @@ public class ClubDto {
     @NotEmpty(message = "Club title should not be empty")
     private String title;
     @NotEmpty(message = "Photo Url should not be empty")
-    private  String photoUrl;
+    private String photoUrl;
     @NotEmpty(message = "Content should not be empty")
     private String content;
     private LocalDateTime createdOn;

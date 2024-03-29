@@ -25,10 +25,8 @@
                            href="#!"></a>
 
                     </div>
-                    <!--  <a class="btn btn-primary" th:href="@{/clubs/{clubId}(clubId=${club.id})}">View</a>
-                   <a class="btn btn-primary" th:href="@{/clubs/{clubId}/edit(clubId=${club.id})}">Edit</a>-->
-                    <a  th:href="@{/events/{eventId}(eventId=${event.id})}" class="btn btn-primary" >View</a>
-                    <a class="btn btn-primary">Edit</a>
+                    <a th:href="@{/events/{eventId}(eventId=${event.id})}" class="btn btn-primary">View</a>
+                    <a th:href="@{/events/{eventId}/edit(eventId=${event.id})}" class="btn btn-primary">Edit</a>
                 </div>
 
             </div>

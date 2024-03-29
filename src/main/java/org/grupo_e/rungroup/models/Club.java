@@ -25,7 +25,7 @@ public class Club {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String title;
-    private  String photoUrl;
+    private String photoUrl;
     private String content;
     @CreationTimestamp
     private LocalDateTime createdOn;

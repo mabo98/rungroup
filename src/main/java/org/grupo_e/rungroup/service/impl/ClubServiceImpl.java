@@ -4,7 +4,6 @@ import org.grupo_e.rungroup.dto.ClubDto;
 import org.grupo_e.rungroup.models.Club;
 import org.grupo_e.rungroup.repository.ClubRepository;
 import org.grupo_e.rungroup.service.ClubService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +22,8 @@ public class ClubServiceImpl implements ClubService {
 
     @Override
     public List<ClubDto> findAllClubs() {
-List<Club> clubs = clubRepository.findAll();
-    return clubs.stream().map((club) -> mapToClubDto(club)).collect((Collectors.toList()));
+        List<Club> clubs = clubRepository.findAll();
+        return clubs.stream().map((club) -> mapToClubDto(club)).collect((Collectors.toList()));
     }
 
     @Override
@@ -55,8 +54,6 @@ List<Club> clubs = clubRepository.findAll();
         List<Club> clubs = clubRepository.searchClubs(query);
         return clubs.stream().map(club -> mapToClubDto(club)).collect(Collectors.toList());
     }
-
-
 
 
 }
