@@ -53,6 +53,17 @@ List<Club> clubs = clubRepository.findAll();
         clubRepository.save(club1);
     }
 
+    @Override
+    public void delete(Long clubId) {
+        clubRepository.deleteById(clubId);
+    }
+
+    @Override
+    public List<ClubDto> searchClubs(String query) {
+        List<Club> clubs = clubRepository.searchClubs(query);
+        return clubs.stream().map(club -> mapToClubDto(club)).collect(Collectors.toList());
+    }
+
     private Club mapToClub(ClubDto club) {
         Club club1 = Club.builder()
                 .id(club.getId())
