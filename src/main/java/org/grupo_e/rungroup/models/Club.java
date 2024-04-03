@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SourceType;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -27,9 +30,9 @@ public class Club {
     private String title;
     private String photoUrl;
     private String content;
-    @CreationTimestamp
+    @CreationTimestamp(source = SourceType.DB)
     private LocalDateTime createdOn;
-    @CreationTimestamp
+    @UpdateTimestamp
     private LocalDateTime updatedOn;
     @OneToMany(mappedBy = "club", cascade = CascadeType.REMOVE)
     private List<Event> events = new ArrayList<>();

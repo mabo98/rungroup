@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SourceType;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
@@ -25,7 +26,7 @@ public class Event {
     private LocalDateTime endTime;
     private String type;
     private String photoUrl;
-    @CreationTimestamp
+    @CreationTimestamp(source = SourceType.DB)
     private LocalDateTime createdOn;
     @UpdateTimestamp
     private LocalDateTime updatedOn;
