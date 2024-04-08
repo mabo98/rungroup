@@ -3,9 +3,13 @@
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         layout:decorate="~{layout}">
 <head>
-    <title>Register</title>
+    <title>Login</title>
 </head>
+
+<body class="d-flex flex-column h-75">
+<main class="flex-shrink-0">
 <section layout:fragment="body">
+
     <style>
         .main {
             padding: 0px 10px;
@@ -33,21 +37,21 @@
             }
         }
     </style>
-    <div class="main">
-        <div class="col-md-6 col-sm-12">
-            <div th:if="${param.error}" class="alert alert-success">
+    <div class="main my-auto">
+        <div class="col-md-6 col-sm-12 ">
+            <div th:if="${param.error}" class="alert alert-danger">
                 Invalid username or password.</div>
             <div th:if="${param.logout}" class="alert alert-success">
                 You have been logged out.</div>
             <div class="login-form">
-                <form method="post" role="form" th:action="@{/login}">
+                <form method="post" th:action="@{/login}">
                     <div class="form-group">
                         <label>Username</label>
                         <input
                                 id="username"
                                 type="text"
                                 class="form-control"
-                                placeholder="Username"
+                                placeholder="Your Username"
                                 name="username">
                     </div>
                     <div class="form-group">
@@ -56,14 +60,16 @@
                                 id="password"
                                 type="password"
                                 class="form-control"
-                                placeholder="Password"
-                                password="password">
+                                placeholder="Your Password"
+                                name="password">
                     </div>
-                    <button th:href="@{/register}" type="submit" class="btn btn-black">Don´t have an account already? Register Here</button>
-                    <button type="submit" value="Log in" class="btn btn-secondary">Login</button>
+                    <button th:href="@{/register}" type="submit" class="btn btn-outline-secondary my-3">Don't have an account already? Register Here</button>
+                    <button type="submit" value="Log in" class="btn btn-outline-primary my-3">Login</button>
                 </form>
             </div>
         </div>
     </div>
 </section>
+</main>
+</body>
 </html>

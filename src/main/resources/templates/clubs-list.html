@@ -1,6 +1,6 @@
 <html
         xmlns:th="http://thymeleaf.org"
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:form="http://www.w3.org/1999/html"
         layout:decorate="~{layout}">
 <head>
     <title>
@@ -30,11 +30,13 @@
                     <div class="position-relative mb-3">
                         <img class="img-fluid rounded-3 mb-3" th:src="${club.photoUrl}" alt="..."/>
                         <a th:text="${club.title}" class="h3 fw-bolder text-decoration-none link-dark stretched-link"
-                           href="#!">Project name</a>
+                           href="#!">Event name</a>
 
                     </div>
                     <a class="btn btn-primary" th:href="@{/clubs/{clubId}(clubId=${club.id})}">View</a>
-                    <a class="btn btn-primary" th:href="@{/clubs/{clubId}/edit(clubId=${club.id})}">Edit</a>
+                    <div th:if="${user.id} == ${club.createdBy.id}">
+                        <a class="btn btn-primary my-3" th:href="@{/clubs/{clubId}/edit(clubId=${club.id})}">Edit</a>
+                    </div>
                 </div>
 
             </div>

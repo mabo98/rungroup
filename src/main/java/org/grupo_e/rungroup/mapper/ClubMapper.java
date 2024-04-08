@@ -14,6 +14,7 @@ public class ClubMapper {
                 .title(club.getTitle())
                 .photoUrl(club.getPhotoUrl())
                 .content(club.getContent())
+                .createdBy(club.getCreatedBy())
                 .createdOn(club.getCreatedOn())
                 .updatedOn(club.getUpdatedOn())
                 .events(club.getEvents().stream().map((event) -> mapToEventDto(event)).collect(Collectors.toList()))
@@ -23,14 +24,15 @@ public class ClubMapper {
     }
 
     public static Club mapToClub(ClubDto club) {
-        Club club1 = Club.builder()
+        Club clubDto = Club.builder()
                 .id(club.getId())
                 .title(club.getTitle())
                 .photoUrl(club.getPhotoUrl())
                 .content(club.getContent())
+                .createdBy(club.getCreatedBy())
                 .createdOn(club.getCreatedOn())
                 .updatedOn(club.getUpdatedOn())
                 .build();
-        return club1;
+        return clubDto;
     }
 }
