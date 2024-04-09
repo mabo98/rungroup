@@ -13,10 +13,10 @@ import lombok.Setter;
 
 public class RegistrationDto {
     private long id;
-    @NotEmpty
+    @NotEmpty(message = "El usuario no puede estar vacío")
     private String username;
-    @NotEmpty
+    @NotEmpty(message = "El email no puede estar vacío")
     private String email;
-    @NotEmpty
+    @NotEmpty(message = "La contraseña no puede estar vacía")
     private String password;
 }

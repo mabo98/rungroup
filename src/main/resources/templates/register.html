@@ -38,6 +38,10 @@
         }
     </style>
     <div class="main my-auto">
+        <h1 class="fw-bolder">Register</h1>
+        <p class="lead fw-normal text-muted mb-0">Registre sus credenciales</p>
+    </div>
+    <div class="main my-auto">
         <div class="col-md-6 col-sm-12">
             <div th:if="${param.fail}" class="alert alert-danger">
                 Username or email already exists</div>
@@ -51,7 +55,7 @@
                                 placeholder="Username"
                                 th:field="*{username}">
                     </div>
-                    <p th:if="${#fields.hasErrors('username')}" class="text-danger"></p>
+                    <p th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}"></p>
                     <div class="form-group">
                         <label>Email</label>
                         <input
@@ -60,7 +64,7 @@
                                 placeholder="Email"
                                 th:field="*{email}">
                     </div>
-                    <p th:if="${#fields.hasErrors('email')}" class="text-danger"></p>
+                    <p th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></p>
                     <div class="form-group">
                         <label>Password</label>
                         <input
@@ -69,8 +73,8 @@
                                 placeholder="Password"
                                 th:field="*{password}">
                     </div>
-                    <p th:if="${#fields.hasErrors('password')}" class="text-danger"></p> <br>
-                    <button th:href="@{/login}" type="submit" class="btn btn-outline-secondary ">Login here.</button>
+                    <p th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></p> <br>
+                    <a class="btn btn-outline-secondary my-3" th:href="@{/login}">Already have an account? Login here</a>
                     <button th:href="@{/register}" type="submit" class="btn btn-secondary offset-lg-0">Register</button>
                 </form>
             </div>

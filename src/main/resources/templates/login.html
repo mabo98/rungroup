@@ -38,6 +38,10 @@
         }
     </style>
     <div class="main my-auto">
+        <h1 class="fw-bolder">Login</h1>
+        <p class="lead fw-normal text-muted mb-0">Ingrese sus credenciales</p>
+    </div>
+    <div class="main my-auto">
         <div class="col-md-6 col-sm-12 ">
             <div th:if="${param.error}" class="alert alert-danger">
                 Invalid username or password.</div>
@@ -63,7 +67,7 @@
                                 placeholder="Your Password"
                                 name="password">
                     </div>
-                    <button th:href="@{/register}" type="submit" class="btn btn-outline-secondary my-3">Don't have an account already? Register Here</button>
+                    <a class="btn btn-outline-secondary my-3" th:href="@{/register}">Don't have an account already? Register Here</a>
                     <button type="submit" value="Log in" class="btn btn-outline-primary my-3">Login</button>
                 </form>
             </div>

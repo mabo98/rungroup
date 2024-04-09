@@ -4,9 +4,11 @@ package org.grupo_e.rungroup.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -30,13 +32,11 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-
-        http
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/register", "/clubs", "/css/**", "/clubs/search", "/clubs/","/clubs-list/","/clubs/search?query").permitAll()
-                        .anyRequest().authenticated()
-                )
+        http.csrf().disable()
+                .authorizeRequests()
+                .requestMatchers("/login", "/register", "/clubs", "/css/**")
+                .permitAll()
+                .and()
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/clubs")
@@ -49,25 +49,8 @@ public class SecurityConfig {
                 );
 
         return http.build();
-/*
 
- http.csrf().disable()
-                .authorizeRequests()
-                .requestMatchers("/login", "/register", "/clubs", "/css/**")
-                .permitAll()
 
-        return httpSecurity
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/token/**").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
-                .httpBasic(Customizer.withDefaults())
-                .build();
-
- */
     }
 
     public void configure(AuthenticationManagerBuilder builder) throws Exception {
