@@ -27,6 +27,7 @@ public class EventController {
         this.userService = userService;
     }
 
+
     @GetMapping("/events/{clubId}/new")
     public String createEventForm(@PathVariable("clubId") long clubId, Model model) {
         Event event = new Event();

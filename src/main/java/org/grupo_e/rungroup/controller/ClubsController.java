@@ -25,6 +25,10 @@ public class ClubsController {
         this.clubService = clubService;
         this.userService = userService;
     }
+    @GetMapping("/")
+    public String home() {
+        return "clubs-list";
+    }
 
     @GetMapping("/clubs")
     public String listClubs(Model model) {
