@@ -7,6 +7,7 @@ import org.grupo_e.rungroup.repository.ClubRepository;
 import org.grupo_e.rungroup.repository.UserRepository;
 import org.grupo_e.rungroup.security.SecurityUtil;
 import org.grupo_e.rungroup.service.ClubService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +20,7 @@ import static org.grupo_e.rungroup.mapper.ClubMapper.mapToClubDto;
 public class ClubServiceImpl implements ClubService {
     private ClubRepository clubRepository;
     private UserRepository userRepository;
-
+@Autowired
     public ClubServiceImpl(ClubRepository clubRepository, UserRepository userRepository){
 
         this.clubRepository = clubRepository;
